@@ -130,7 +130,7 @@
                 const z0 = 50;
                 const s11Data = response.map(y => {
                     const zCombined = 1 / y;
-                    const s11 = (zCombined - z0) / (zCombined + z0);
+                    const s11 = 2 / (2 + zCombined / z0 + z0 / zCombined);
                     return 20 * Math.log10(Math.abs(s11));
                 });
 
