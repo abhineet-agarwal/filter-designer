@@ -98,10 +98,11 @@ class BAWFilterDesigner:
             print("No filter response to compute S-parameters.")
         else:
             frequencies = next(iter(self.resonators.values()))[0]
-            z_combined = 1 / self.filter_response
+            Zin = 1 / self.filter_response
+            Z0 = 50
             #s11 = (z_combined - z0) / (z_combined + z0)
-            s11 = np.log10(np.abs(1/(self.filter_response)))
-            plt.plot(frequencies, s11, label="|S11| (dB)")
+            S21 = 2 / (2 + Zin / Z0 + Z0 / Zin)
+            plt.plot(frequencies, S21, label="|S11| (dB)")
             plt.xlabel('Frequency (Hz)')
             plt.ylabel('S11 (dB)')
             plt.title('S11 Parameter')
